@@ -18,6 +18,11 @@ module.exports = (options) ->
   # mark it as passing on string/buffer, not objects
   @_options.readableObjectMode = false
 
+  # unless they called string(), which sets this value to false, then let's
+  # set it to true assuming they are converting from an object to a string
+  # example: transforming.toString(fn) would expect object -> string
+  @_options.writableObjectMode ?= true
+
   # build the transform
   transform = buildTransformer @_options
 
