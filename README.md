@@ -24,11 +24,11 @@ npm install transforming --save
 // get the module and build it
 var transforming = require('transforming')()
 
-// make a fromJson converter function
-var fromJson = JSON.parse.bind JSON
+// make a fromJson converter function (Note: no bind needed)
+var fromJson = JSON.parse
 
-// make a toJson converter function
-var toJson JSON.stringify.bind JSON
+// make a toJson converter function (Note: no bind needed)
+var toJson = JSON.stringify
 
 // build a transform which:
 //  1. accepts bytes containing newline delimited json strings
