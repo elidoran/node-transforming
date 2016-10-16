@@ -49,6 +49,31 @@ tests = [
   }
 
 
+  {
+    what: 'with JSON.stringify'
+    build: [
+      { name: 'object' }
+      { name: 'toString', args: [(object) -> JSON.stringify object] }
+    ]
+    calls: [
+      { name: 'end', args: [ {test: 'object'} ] }
+    ]
+    output: ['{"test":"object"}']
+  }
+
+
+  {
+    what: 'with JSON.stringify (convenience)'
+    build: [
+      { name: 'toString', args: [(object) -> JSON.stringify object] }
+    ]
+    calls: [
+      { name: 'end', args: [ {test: 'object'} ] }
+    ]
+    output: ['{"test":"object"}']
+  }
+
+
 ]
 
 describe 'test transforming', ->
